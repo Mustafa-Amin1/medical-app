@@ -1,43 +1,27 @@
 <template>
   <div id="app">
-    <!-- <div id="nav"> -->
-      <app-header></app-header>
-      <router-link to="/">Home</router-link> 
-    <!-- </div> -->
-    
+    <!-- header -->
+    <app-header></app-header>
+    <!-- router view -->
     <router-view />
+
+    <!-- footer -->
+    <app-footer></app-footer>
+
   </div>
 </template>
 
 <script>
-import  AppHeader  from "../app/shared/components/app-header/nav.vue"
+import AppHeader from "../app/shared/components/app-header/nav.vue";
+import AppFooter from "../app/shared/components/app-footer/footer.vue";
 
 export default {
   name: "app",
   components: {
-    "app-header" :AppHeader
-  }
-}
+    "app-header": AppHeader,
+    "app-footer": AppFooter,
+  },
+};
 </script>
 <style lang="scss">
-#home {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

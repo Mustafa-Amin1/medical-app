@@ -1,3 +1,7 @@
+import  Slider  from '../home/slider/slider.vue'
+
+
+
 export default {
     name: "Home",
     data() {
@@ -5,4 +9,7 @@ export default {
         
       };
     },
+    components:{
+        'app-slider': Slider
+    }
 }

@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <span style="font-size:30px">Hello Home page</span>
+        <app-slider></app-slider>
     </div>
 </template>
 <script src="./home.js"></script>

@@ -1,0 +1,5 @@
+npm install -g sass
+ npm i bootstrap popper.js jquery
+ npm i bootstrap-v4-rtl
+  npm install vue-router
+  npm install vue bootstrap-vue bootstrap
