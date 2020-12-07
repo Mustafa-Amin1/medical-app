@@ -1,5 +1,6 @@
 <template>
   <div id="slider">
+    
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -62,5 +63,6 @@
 </template>
 <script src="./slider.js"></script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 </style>

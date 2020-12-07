@@ -2,15 +2,17 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
 
-//shared
-@import '../app/shared/theme/_mixins' ;
-@import '../app/shared/theme/_variables' ;
 
 //partials
 @import '../theme/partials/buttons';
 @import '../theme/partials/grid';
 @import '../theme/partials/mixin';
+@import '../theme/partials/slider';
+@import '../theme/partials/nav';
 
+//shared
+@import '../app/shared/theme/_mixins' ;
+@import '../app/shared/theme/_variables' ;
 
 body{
     background:#f3f9ff;
