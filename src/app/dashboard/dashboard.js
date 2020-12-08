@@ -19,6 +19,7 @@ export default {
 
     },
     methods: {
+        // Start charts
         createChart(chartId, chartData) {
             const ctx = document.getElementById(chartId);
             const myChart = new Chart(ctx, {
@@ -28,14 +29,18 @@ export default {
             });
            return myChart
         }
+        //End charts
     },
     components: {
         
       },
     mounted() {
+        //start create charts
         this.createChart('patients-chart', this.patientsChartData);
         this.createChart('patientsAge-chart', this.patientsAgeChartData);
         this.createChart('DepartmentCapacity-chart', this.DepartmentCapacityChartData);
         this.createChart('patientsGender-chart', this.patientsGenderChartData);
+        //End create charts
+
       }
 }

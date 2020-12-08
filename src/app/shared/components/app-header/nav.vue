@@ -31,7 +31,7 @@
             <em>User</em>
           </template>
           <b-dropdown-item >Profile</b-dropdown-item>
-          <b-dropdown-item >Sign Out</b-dropdown-item>
+          <b-dropdown-item > <router-link to="/registration">SIGN UP</router-link> </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

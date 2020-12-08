@@ -2,7 +2,7 @@ import Dashboard from "./dashboard.vue";
 import Appointments from "../dashboard/managements/appointments/appointments.vue";
 import Doctors from "../dashboard/managements/doctors/doctors.vue";
 import Patients from "../dashboard/managements/patients/patients.vue";
-import Users from "../dashboard/managements/users/admin/manage-users/manage-users.vue";
+import Users from "../dashboard/managements/users/manage-users/manage-users.vue";
 
 const dashboardRoutes = [
     {

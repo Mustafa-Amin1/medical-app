@@ -1,19 +1,50 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "dasdsad@yahoo.com",
+      "name": "dsadsad",
+      "password": "aaAA@@66",
+      "confirmation": "aaAA@@66",
+      "gender": "Male",
+      "checked": [
+        "true"
+      ],
+      "id": 1
+    },
+    {
+      "email": "acc.mustafa1@yahoo.com",
+      "name": "Mustafa",
+      "password": "aaAA@@66",
+      "confirmation": "aaAA@@66",
+      "gender": "Male",
+      "checked": [
+        "true"
+      ],
+      "id": 2
+    },
+    {
+      "email": "nouran@yahoo.com",
+      "name": "Nouran",
+      "password": "aaAA@@66",
+      "confirmation": "aaAA@@66",
+      "gender": "Female",
+      "checked": [
+        "true"
+      ],
+      "id": 3
+    },
+    {
+      "email": "Ahmed@yahoo.com",
+      "name": "Ahmed",
+      "password": "aaAA@@66",
+      "confirmation": "aaAA@@66",
+      "gender": "Male",
+      "checked": [
+        "true"
+      ],
+      "id": 4
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "patients": [],
+  "doctors": []
 }
