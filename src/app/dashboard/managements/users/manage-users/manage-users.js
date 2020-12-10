@@ -1,50 +1,35 @@
-import $ from 'jquery';
 
 //kendo libraries
-import { Grid, GridColumn } from "@progress/kendo-grid-vue-wrapper";
-import { DataSource } from "@progress/kendo-datasource-vue-wrapper";
-import { ToolBar, ToolBarItem } from "@progress/kendo-buttons-vue-wrapper";
-
-import axios from "axios";
-
+import { Grid, GridColumn } from '@progress/kendo-grid-vue-wrapper';
+import { KendoDataSource } from '@progress/kendo-datasource-vue-wrapper';
+// import dffsdf from '../../../../../../src/myData.js'
 export default {
     data: function () {
         return {
-          products: [],
-          StatusDS: '',
-          Gender: ["Male", "Female"],
+          schemaModelFields: {
+            Id: { type: 'number', editable: false },
+            Name: { validation: { required: true } },
+            Email: { type: 'email', validation: { required: true, min: 1 } },
+            // Phone: { type: 'number', validation: { min: 0, required: true } }
+        }
         };
       },
       methods:{
-        showDetails: function (e) {
-          e.preventDefault();
-    
-          var grid = this.$refs.grid.kendoWidget();
-          var dataItem = grid.dataItem($(e.currentTarget).closest("tr"));
-    
-          alert(
-            '"' + dataItem.Name + '" details are about to be logged on the console.'
-          );
-          console.log(dataItem);
-        },
+        parameterMap: function(options, operation) {
+          if (operation !== 'read' && options.models) {
+              // return { models: kendo.stringify(options.models) };
+          }
+      }
       },
       computed:{
         getAlert() {
           return this.$store.getters.getAlert
-        }
-      },
-      created() {
-        axios.get("http://localhost:3000/users").then((response) => {
-          // console.log(response.data);
-          return (this.products = response.data);
-        });
+        },
       },
     components: {
-      "kendo-grid": Grid,
-      "grid-column": GridColumn,
-      datasource: DataSource,
-      toolbar: ToolBar,
-      "toolbar-item": ToolBarItem,
+      'kendo-grid': Grid,
+      'kendo-grid-column': GridColumn,
+      'kendo-datasource': KendoDataSource
 
       },
 }

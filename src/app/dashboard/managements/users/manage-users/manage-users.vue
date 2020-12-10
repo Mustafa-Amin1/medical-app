@@ -1,82 +1,52 @@
 <template>
   <div id="manage-users">
     <p>{{ getAlert }}</p>
+
     <div class="container-fluid">
-      <datasource
-        ref="datasource"
-        :data="products"
-        :page-size="20"
-        :batch="true"
-      >
-      </datasource>
-      <!-- <toolbar @click="onClick">
-        <toolbar-item type="button" text="New Client" icon="add"></toolbar-item>
-      </toolbar> -->
-      <kendo-grid
-        ref="grid"
-        :offline-storage="'offline-kendo-demo'"
-        :data-source-ref="'datasource'"
-        :editable="'inline'"
-        :column-menu="true"
-        :filterable="true"
-        :pageable="true"
-        :pageable-page-sizes="[5, 10, 20, 30]"
-        :pageable-always-visible="false"
-        :sortable="true"
-        :selectable="'multiple row'"
-        :groupable="true"
-        :scrollable-endless="true"
-        :height="700"
-      >
-        <grid-column :selectable="true" :width="20"></grid-column>
+        <kendo-datasource ref="datasource1"
+                      :offline-storage="'offline-kendo-demo'"
+                      :transport-read-url="'https://10.24.100.240:44351/odata/students'"
+                      :transport-read-data-type="'jsonp'"
+                      :transport-update-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Update'"
+                      :transport-update-data-type="'odata'"
+                      :transport-destroy-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Destroy'"
+                      :transport-destroy-data-type="'odata'"
+                      :transport-create-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Create'"
+                      :transport-create-data-type="'odata'"
+                      :transport-parameter-map="parameterMap"
+                      :schema-model-id="'Id'"
+                      :schema-model-fields="schemaModelFields"
+                      :batch='true'
+                      :page-size='20'>
+    </kendo-datasource>
 
-        <grid-column
-          field="id"
-          title="Product Name"
-          :width="60"
-        ></grid-column>
-        <grid-column
-          field="name"
-          title="Unit Price"
-          :width="80"
-          :format="'{0:c}'"
-        ></grid-column>
-        <grid-column
-          field="email"
-          title="Units In Stock"
-          :width="50"
-        ></grid-column>
-        <grid-column
-          field="gender"
-          title="Gender"
-          :width="50"
-          :values="Gender"
-        ></grid-column>
-        <!-- custom column -->
-
-        <!-- <kendo-grid-column
-        :command="{ text: 'View Details', click: showDetails }"
-        :title="'&nbsp;'"
-        :width="50"
-      ></kendo-grid-column> -->
-
-        <grid-column
-          :command="[
-            'edit',
-            'delete',
-            { text: 'View Details', click: showDetails },
-          ]"
-          title=" Actions"
-          :width="100"
-        ></grid-column>
-      </kendo-grid>
+    <kendo-grid ref="grid"
+                :height="600"
+                :data-source-ref="'datasource1'"
+                :pageable-refresh='true'
+                :editable="'inline'"
+                :toolbar="['create']"
+                :selectable="'multiple row'">
+        <kendo-grid-column :field="'Name'"
+                           :title="'Unit Price'"
+                           :width="120"
+                           :format="'{0:c}'"></kendo-grid-column>
+        <kendo-grid-column :field="'Email'"
+                           :title="'Units In Stock'"
+                           :width="120"></kendo-grid-column>
+        <!-- <kendo-grid-column :field="'Phone'"
+                           :width="120"></kendo-grid-column> -->
+        <kendo-grid-column :command="['edit', 'destroy']"
+                           :title="'&nbsp;'"
+                           :width="200"></kendo-grid-column>
+    </kendo-grid>
     </div>
   </div>
 </template>
 <script src="./manage-users.js"></script>
 
 <style lang="scss" scoped>
-// @import "../../theme/users.scss";
+// @import "";
 .k-window-content {
   overflow: hidden !important;
 }

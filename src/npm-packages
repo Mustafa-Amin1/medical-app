@@ -17,3 +17,7 @@ npm i vue-axios
 :::: kendo libraries ::::
 npm install --save @progress/kendo-datasource-vue-wrapper
 npm install --save @progress/kendo-buttons-vue-wrapper
+npm install --save @progress/kendo-data-query
+npm install --save @progress/kendo-scheduler-vue-wrapper
+npm install --save @progress/kendo-dropdowns-vue-wrapper
+npm install --save @progress/kendo-window-vue-wrapper
