@@ -2,9 +2,9 @@
   <div id="dashboard" class="my-5">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="database-item col-md-2 mx-5">
+        <div class="database-item col-md-3 px-5 my-2">
           <router-link to="/dashboard/appointments">
-            <div class="row align-items-center">
+            <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <!-- <i class="fas fa-user-md"></i> -->
                 <img
@@ -22,9 +22,9 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-2 mx-5">
+        <div class="database-item col-md-3 px-5 my-2">
           <router-link to="/dashboard/doctors">
-            <div class="row align-items-center">
+            <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <img
                   src="../../assets/flat-icons/dashboard/doctor.svg"
@@ -41,9 +41,9 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-2 mx-5">
+        <div class="database-item col-md-3 px-5 my-2">
           <router-link to="/dashboard/patients">
-            <div class="row align-items-center">
+            <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <img
                   src="../../assets/flat-icons/dashboard/patients.svg"
@@ -60,9 +60,9 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-2 mx-5">
+        <div class="database-item col-md-3 px-5 my-2">
           <router-link to="/dashboard/admin/users">
-            <div class="row align-items-center">
+            <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <img
                   src="../../assets/flat-icons/dashboard/user.svg"
@@ -112,19 +112,23 @@
 <style lang="scss" scoped>
 .database-item {
   // border: 1px solid red;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
+
+  .datavase-item__row{
   box-shadow: 0 5px 10px lightgrey;
   border-radius: 0.45rem;
   transition: 0.5s;
+    &:hover {
+    transform: scaleY(0.9);
+  }
+  }
   a {
     text-decoration: none;
   }
   i {
     font-size: 4rem;
   }
-  &:hover {
-    transform: scaleY(0.9);
-  }
+
 }
 </style>

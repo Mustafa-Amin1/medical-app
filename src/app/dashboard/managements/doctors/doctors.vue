@@ -3,7 +3,7 @@
            <!-- popup window -->
     <window
       ref="windowRef"
-      :width="'1440'"
+      :width="'auto'"
       :height="'800'"
       :title="'Patient Registeration'"
       style="display: none"

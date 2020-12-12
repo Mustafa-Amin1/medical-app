@@ -1,6 +1,9 @@
 import Vue from "vue";
 import App from "./app/app.vue";
 
+// veevalidate
+
+
 //router
 import router from "./app/app-router.js" ;
 
@@ -19,9 +22,7 @@ import "@progress/kendo-theme-bootstrap/dist/all.scss";
 import { Grid, GridInstaller } from '@progress/kendo-grid-vue-wrapper'
 Vue.use(GridInstaller)
 
-// veevalidate
-// import VeeValidate from 'vee-validate';
-// Vue.use(VeeValidate);
+
 
 //api communication
 import axios from 'axios'
@@ -31,7 +32,6 @@ Vue.use(VueAxios, axios)
 //style sheet
 import './theme/main.scss'
 // localStorage.getItem('selectedLang') == 'en' ? import('./theme/main.scss') : import('./theme/main-rtl.scss');
-
 
 Vue.config.productionTip = false;
 

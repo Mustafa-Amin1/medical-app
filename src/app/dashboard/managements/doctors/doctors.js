@@ -8,6 +8,8 @@ import { ToolBar, ToolBarItem } from "@progress/kendo-buttons-vue-wrapper";
 // api data
 import axios from "axios";
 
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+
 // child compopnents
 import paitentFormPopup from '../../../../app/shared/components/forms/patient-form/patient-form.vue'
 export default {
@@ -18,13 +20,15 @@ export default {
     window: Window,
     toolbar: ToolBar,
     "toolbar-item": ToolBarItem,
-    "app-paitent-form-popup": paitentFormPopup
+    ValidationProvider,
+    ValidationObserver,
+    "app-paitent-form-popup": paitentFormPopup,
   },
   data: function () {
     return {
       products: [],
       categories: [],
-      actions: ["minimize ", "Maximize", "Close"],
+      actions: ["Minimize ", "Maximize", "Close"],
     };
   },
   created() {

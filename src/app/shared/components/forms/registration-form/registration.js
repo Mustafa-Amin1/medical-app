@@ -1,5 +1,5 @@
 import  axios  from "axios" ;
-import "../formValidate";
+// import "../formValidate";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 export default {
   data() {

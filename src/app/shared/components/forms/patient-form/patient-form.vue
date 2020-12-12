@@ -5,7 +5,7 @@
         <h2>Patient Registeration</h2>
       </div> -->
       <div class="form">
-        <app-observer ref="form" v-slot="{ invalid, handleSubmit }">
+        <ValidationObserver ref="form" v-slot="{ invalid, handleSubmit }">
           <b-form @submit.prevent="handleSubmit(onSubmit)">
             <div class="container">
               <div class="form-buttons mt-1 mb-3 rounded">
@@ -469,7 +469,7 @@
               </b-form-group>
             </div>
           </b-form>
-        </app-observer>
+        </ValidationObserver>
       </div>
       <!-- <pre class="m-0">{{ form }}</pre> -->
     </div>

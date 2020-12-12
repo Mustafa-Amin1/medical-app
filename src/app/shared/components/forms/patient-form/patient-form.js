@@ -1,14 +1,9 @@
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import "../../forms/formValidate";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 export default {
     data() {
         return {
             // date: null,
-            name: 'app-paitent-form-popup',
-            components: {
-                ValidationProvider,
-                'app-observer':ValidationObserver
-            },
             datepicker: false,
             form: {
                 patientName: {
@@ -165,7 +160,10 @@ export default {
         }
     },
     computed: {},
-
+    components: {
+        ValidationProvider,
+        ValidationObserver
+    }
 };
 
 // add rules

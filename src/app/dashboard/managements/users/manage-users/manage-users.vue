@@ -1,45 +1,46 @@
 <template>
   <div id="manage-users">
-    <p>{{ getAlert }}</p>
+    <!-- <p>{{ getAlert }}</p> -->
 
     <div class="container-fluid">
-        <kendo-datasource ref="datasource1"
-                      :offline-storage="'offline-kendo-demo'"
-                      :transport-read-url="'https://10.24.100.240:44351/odata/students'"
+   <kendo-datasource ref="datasource1"
+                      :transport-read-url="'https://demos.telerik.com/kendo-ui/service/Products'"
                       :transport-read-data-type="'jsonp'"
-                      :transport-update-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Update'"
-                      :transport-update-data-type="'odata'"
-                      :transport-destroy-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Destroy'"
-                      :transport-destroy-data-type="'odata'"
-                      :transport-create-url="'https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers/Create'"
-                      :transport-create-data-type="'odata'"
+                      :transport-update-url="'https://demos.telerik.com/kendo-ui/service/Products/Update'"
+                      :transport-update-data-type="'jsonp'"
+                      :transport-destroy-url="'https://demos.telerik.com/kendo-ui/service/Products/Destroy'"
+                      :transport-destroy-data-type="'jsonp'"
+                      :transport-create-url="'https://demos.telerik.com/kendo-ui/service/Products/Create'"
+                      :transport-create-data-type="'jsonp'"
                       :transport-parameter-map="parameterMap"
-                      :schema-model-id="'Id'"
+                      :schema-model-id="'ProductID'"
                       :schema-model-fields="schemaModelFields"
                       :batch='true'
                       :page-size='20'>
     </kendo-datasource>
 
-    <kendo-grid ref="grid"
-                :height="600"
+    <kendo-grid :height="600"
+                ref="grid"
                 :data-source-ref="'datasource1'"
-                :pageable-refresh='true'
                 :editable="'inline'"
-                :toolbar="['create']"
-                :selectable="'multiple row'">
-        <kendo-grid-column :field="'Name'"
+                :pageable="true"
+                :toolbar="['create']">
+        <kendo-grid-column :field="'ProductName'"></kendo-grid-column>
+        <kendo-grid-column :field="'UnitPrice'"
                            :title="'Unit Price'"
                            :width="120"
                            :format="'{0:c}'"></kendo-grid-column>
-        <kendo-grid-column :field="'Email'"
+        <kendo-grid-column :field="'UnitsInStock'"
                            :title="'Units In Stock'"
                            :width="120"></kendo-grid-column>
-        <!-- <kendo-grid-column :field="'Phone'"
-                           :width="120"></kendo-grid-column> -->
-        <kendo-grid-column :command="['edit', 'destroy']"
+        <kendo-grid-column :field="'Discontinued'" :width="120"></kendo-grid-column>
+        <kendo-grid-column :command="['edit', { text: 'Delete', click: DeleteUser }]"
                            :title="'&nbsp;'"
-                           :width="200"></kendo-grid-column>
+                           :width="180"></kendo-grid-column>
     </kendo-grid>
+    <delete-confirmation :deleteBtnClick="showDeleteConfirmation" @child-delete-confirmation-value-emitter="confirmationValuee"></delete-confirmation>
+   <notification :deleteStatue ="isHello" ></notification>
+   <notification :deleteStatue ="isDeleted" ></notification>
     </div>
   </div>
 </template>
