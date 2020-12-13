@@ -31,7 +31,10 @@ export default {
                     cancelTitle: 'Cancel',
                     footerClass: 'p-2',
                     hideHeaderClose: false,
-                    centered: false
+                    centered: false,
+                    noCloseOnEsc: true,
+                    noCloseOnBackdrop: true,
+
                 })
                     .then(value => {
                         this.confirmationValue = value
