@@ -1,10 +1,9 @@
 import { Grid, GridColumn } from '@progress/kendo-grid-vue-wrapper';
 import { KendoDataSource } from '@progress/kendo-datasource-vue-wrapper';
 import kendo from '@progress/kendo-ui'
-import $ from 'jquery' ;
+import $ from 'jquery';
 
 import DeleteConfirmation from '@/app/shared/components/delete-confirmation/delete-confirmation.vue'
-import Alert from '@/app/shared/components/alert/alert.vue'
 
 export default {
   components: {
@@ -12,15 +11,13 @@ export default {
     'kendo-grid-column': GridColumn,
     'kendo-datasource': KendoDataSource,
     'delete-confirmation': DeleteConfirmation,
-    'notification':Alert
   },
   data() {
     return {
       //delete
-      showDeleteConfirmation:false,
-      isDeleted:null,
-      rowDeleted:'',
-      isHello:false,
+      showDeleteConfirmation: false,
+      isDeleted: false,
+      rowDeleted: '',
 
       schemaModelFields: {
         ProductID: { editable: false, nullable: true },
@@ -53,7 +50,7 @@ export default {
         return { models: kendo.stringify(options.models) }
       }
     },
-    DeleteUser: function(e) {
+    DeleteUser: function (e) {
       e.preventDefault();
       //show confirmation modal
       this.showDeleteConfirmation = true
@@ -64,21 +61,21 @@ export default {
       console.log(rowData.ProductName);
       this.rowDeleted = targetRow
 
-  },
-  confirmationValuee: function(params) {
-    this.isDeleted = params;
-    console.log(this.isDeleted);
-  }
+    },
+    confirmationValuee: function (params) {
+      this.isDeleted = params;
+      console.log(this.isDeleted);
+    }
   },
   watch: {
     isDeleted: function (val) {
-      if(val){
+      if (val) {
         this.showDeleteConfirmation = false
         this.rowDeleted.remove()
-        this.rowDeleted=''
-        this.isHello = true
+        this.rowDeleted = ''
+        this.isDeleted = false
         console.log('deleted');
-      }else if (val == false){
+      } else if (val == false) {
         this.showDeleteConfirmation = false
         console.log('delete is cancelled');
       }

@@ -1,7 +1,5 @@
 <template>
   <div id="manage-users">
-    <!-- <p>{{ getAlert }}</p> -->
-
     <div class="container-fluid">
    <kendo-datasource ref="datasource1"
                       :transport-read-url="'https://demos.telerik.com/kendo-ui/service/Products'"
@@ -39,8 +37,6 @@
                            :width="180"></kendo-grid-column>
     </kendo-grid>
     <delete-confirmation :deleteBtnClick="showDeleteConfirmation" @child-delete-confirmation-value-emitter="confirmationValuee"></delete-confirmation>
-   <notification :deleteStatue ="isHello" ></notification>
-   <notification :deleteStatue ="isDeleted" ></notification>
     </div>
   </div>
 </template>

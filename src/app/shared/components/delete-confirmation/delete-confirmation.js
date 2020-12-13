@@ -1,9 +1,17 @@
+import Alert from '@/app/shared/components/alert/alert.vue'
+
 export default {
     name: 'delete-confirmation',
+    components: {
+        'app-notification': Alert
+    },
     data() {
         return {
             //confirmation value
-            confirmationValue: Boolean
+            confirmationValue: Boolean,
+            showAllert: false,
+            notificationStatueValue: 'success',
+            notificationMessageValue: 'User Deleted !!',
         }
     },
     props: {
@@ -11,7 +19,6 @@ export default {
         deleteBtnClick: Boolean
     },
     watch: {
-
         deleteBtnClick: function (val) {
             this.confirmationValue = null
             if (val) {
@@ -29,6 +36,12 @@ export default {
                     .then(value => {
                         this.confirmationValue = value
                         console.log(this.confirmationValue);
+                        if (value == true) {
+                            this.showAllert = true
+                            setTimeout(() => {
+                                this.showAllert = false
+                            }, 1);
+                        }
                     })
                     .catch(err => {
                         alert('delete confirmation function error')
