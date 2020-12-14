@@ -2,7 +2,7 @@
   <div id="dashboard" class="my-5">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="database-item col-md-3 px-5 my-2">
+        <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
           <router-link to="/dashboard/appointments">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
@@ -22,7 +22,7 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-3 px-5 my-2">
+        <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
           <router-link to="/dashboard/doctors">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
@@ -41,7 +41,7 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-3 px-5 my-2">
+        <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
           <router-link to="/dashboard/patients">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
@@ -60,7 +60,7 @@
             </div>
           </router-link>
         </div>
-        <div class="database-item col-md-3 px-5 my-2">
+        <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
           <router-link to="/dashboard/admin/users">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">

@@ -1,3 +1,4 @@
+// import $, { data } from "jquery";
 import $ from "jquery";
 
 //kendo libraries
@@ -8,10 +9,16 @@ import { ToolBar, ToolBarItem } from "@progress/kendo-buttons-vue-wrapper";
 // api data
 import axios from "axios";
 
+//delete confirmation component
+import DeleteConfirmation from '@/app/shared/components/delete-confirmation/delete-confirmation.vue'
+
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
 // child compopnents
 import paitentFormPopup from '../../../../app/shared/components/forms/patient-form/patient-form.vue'
+
+//state
+// import { mapGetters, mapState } from "vuex";
 export default {
   components: {
     "kendo-grid": Grid,
@@ -23,12 +30,29 @@ export default {
     ValidationProvider,
     ValidationObserver,
     "app-paitent-form-popup": paitentFormPopup,
+    'delete-confirmation': DeleteConfirmation,
   },
   data: function () {
+
     return {
+      //delete
+      showDeleteConfirmation: false,
+      isDeleted: false,
+      rowDeleted: '',
+      notificationStatueValue: 'success',
+      notificationMessageValue: 'Doctor is Deleted !!',
+      // confirmData:[{
+      //   notificationStatueValue:'',
+      //   notificationMessageValue:''
+      // }],
       products: [],
       categories: [],
       actions: ["Minimize ", "Maximize", "Close"],
+      //view mode
+      objData:{},
+      //when window close
+      windowClosed:false,
+      // isViewMode:false
     };
   },
   created() {
@@ -52,26 +76,71 @@ export default {
     this.$refs.grid.kendoWidget().dataSource.online(false);
   },
   methods: {
+    //show doctor information
     showDetails: function (e) {
       e.preventDefault();
 
       var grid = this.$refs.grid.kendoWidget();
       var dataItem = grid.dataItem($(e.currentTarget).closest("tr"));
-
-      alert(
-        '"' + dataItem.Name + '" details are about to be logged on the console.'
-      );
+      //show window
+      this.objData = dataItem
+      this.$store.state.isViewMode = true
+      setTimeout(() => {
+      this.patientFormWindow()
+      }, 50);
       console.log(dataItem);
     },
-    onClick: function () {
-      var window = this.$refs.windowRef.kendoWidget();
+    onClose : function() {
+      this.$store.state.isViewMode = false
+      this.$store.state.isWindowClosed = true
+      // this.windowClosed=true
+    },
+    // patient form
+    patientFormWindow: function () {
+      let window = this.$refs.patientFormWindow.kendoWidget();
       window.center().open();
     },
+    //patient info
+    // viewDetails: function () {
+    //   var window = this.$refs.viewMode.kendoWidget();
+    //   window.center().open();
+    // },
+    DeleteUser: function (e) {
+      e.preventDefault();
+      //show confirmation modal
+      this.showDeleteConfirmation = true
+      //get row content
+      let grid = this.$refs.grid.kendoWidget();
+      let targetRow = $(e.currentTarget).closest("tr")
+      let rowData = grid.dataItem(targetRow);
+      console.log(rowData.ProductName);
+      this.rowDeleted = targetRow
+      // this.confirmData.notificationStatueValue='success'
+      // this.confirmData.notificationMessageValue='Doctor is Deleted !!'
+
+    },
+    confirmationValuee: function (params) {
+      this.isDeleted = params;
+      console.log(this.isDeleted);
+    }
   },
-  computed: {},
+  computed: {
+  },
   watch: {
     Data: function () {
       return (this.Data = this.$store.getters["products"]);
     },
+    isDeleted: function (val) {
+      if (val) {
+        this.showDeleteConfirmation = false
+        this.rowDeleted.remove()
+        this.rowDeleted = ''
+        this.isDeleted = false
+        console.log('deleted');
+      } else if (val == false) {
+        this.showDeleteConfirmation = false
+        console.log('delete is cancelled');
+      }
+    }
   },
 };

@@ -1,5 +1,6 @@
 <template>
   <div id="patient-form-popoup">
+    <!-- <p>{{isViewMode}}</p> -->
     <div class="container-fluid">
       <!-- <div class="form-header text-center">
         <h2>Patient Registeration</h2>
@@ -8,7 +9,7 @@
         <ValidationObserver ref="form" v-slot="{ invalid, handleSubmit }">
           <b-form @submit.prevent="handleSubmit(onSubmit)">
             <div class="container">
-              <div class="form-buttons mt-1 mb-3 rounded">
+              <div class="form-buttons mt-1 mb-3 rounded" :style= "{display:displayNone}">
                 <div class="row justify-content-around">
                   <b-button
                     type="submit"
@@ -45,6 +46,7 @@
                           v-model.trim="form.patientName.en.Fname"
                           placeholder="First Name"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -62,6 +64,7 @@
                           v-model.trim="form.patientName.en.Sname"
                           placeholder="Second Name"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -79,6 +82,7 @@
                           v-model.trim="form.patientName.en.Thname"
                           placeholder="Third Name"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -95,6 +99,7 @@
                           v-model.trim="form.patientName.en.Lname"
                           placeholder="Last Name"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -122,6 +127,7 @@
                           v-model.trim="form.patientName.ar.Fname"
                           placeholder="الاسم الاول"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -139,6 +145,7 @@
                           v-model.trim="form.patientName.ar.Sname"
                           placeholder="الاسم الثاني"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -156,6 +163,7 @@
                           v-model.trim="form.patientName.ar.Thname"
                           placeholder="الاسم الثالث"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -173,6 +181,7 @@
                           v-model.trim="form.patientName.ar.Lname"
                           placeholder="الاسم الاخير"
                           :state="errors[0] ? false : valid ? true : null"
+                          :disabled = isViewMode
                         ></b-form-input>
                         <span id="input-error" class="input-message">{{
                           errors[0]
@@ -202,6 +211,7 @@
                         v-model="form.genderSelected"
                         name="some-radios"
                         value="Male"
+                        :disabled = isViewMode
                         >Male</b-form-radio
                       >
                       <b-form-radio
@@ -210,6 +220,7 @@
                         v-model="form.genderSelected"
                         name="some-radios"
                         value="Female"
+                        :disabled = isViewMode
                         >Female</b-form-radio
                       >
                       <b-form-radio
@@ -218,6 +229,7 @@
                         v-model="form.genderSelected"
                         name="some-radios"
                         value="Not specified"
+                        :disabled = isViewMode
                         >Not specified</b-form-radio
                       >
                     </div>
@@ -240,6 +252,7 @@
                         v-model="form.maritalSelected"
                         name="marital"
                         value="Single"
+                        :disabled = isViewMode
                         >Single</b-form-radio
                       >
                       <b-form-radio
@@ -248,6 +261,7 @@
                         v-model="form.maritalSelected"
                         name="marital"
                         value="Married"
+                        :disabled = isViewMode
                         >Married</b-form-radio
                       >
                       <b-form-radio
@@ -256,6 +270,7 @@
                         v-model="form.maritalSelected"
                         name="marital"
                         value="None"
+                        :disabled = isViewMode
                         >None</b-form-radio
                       >
                     </div>
@@ -287,6 +302,7 @@
                         type="number"
                         placeholder="Month"
                         :state="errors[0] ? false : valid ? true : null"
+                        :disabled = isViewMode
                       ></b-form-input>
                       <span id="input-error" class="input-message">{{
                         errors[0]
@@ -311,6 +327,7 @@
                         type="number"
                         placeholder="Day"
                         :state="errors[0] ? false : valid ? true : null"
+                        :disabled = isViewMode
                       ></b-form-input>
 
                       <span id="input-error" class="input-message">{{
@@ -336,6 +353,7 @@
                         type="number"
                         placeholder="Year"
                         :state="errors[0] ? false : valid ? true : null"
+                        :disabled = isViewMode
                       ></b-form-input>
 
                       <span id="input-error" class="input-message">{{
@@ -353,7 +371,7 @@
                           v-model="form.date.datePickerValue"
                           button-only
                           @context="onContext"
-                          :disabled="datepicker"
+                          :disabled="datepicker|| isViewMode"
                         ></b-form-datepicker>
                       </b-input-group-append>
                     </ValidationProvider>
@@ -366,7 +384,7 @@
                     class="w-100 px-4 mb-2"
                   >
                     <!-- <b-form-checkbox-group id="checkboxes-6"> -->
-                    <b-form-checkbox v-model="birthEstimateCheck" value="true"
+                    <b-form-checkbox v-model="birthEstimateCheck" value="true"  :disabled = isViewMode
                       >Estimated Age
                     </b-form-checkbox>
                     <!-- </b-form-checkbox-group> -->
@@ -392,7 +410,7 @@
                           <b-form-input
                             class="estimate-inputs"
                             v-model.trim="form.date.birthEstimate.estimatedYear"
-                            disabled
+                            :disabled =" true || isViewMode"
                             placeholder="Estimated Year"
                             type="number"
                             :state="errors[0] ? false : valid ? true : null"
@@ -418,7 +436,7 @@
                             v-model.number="
                               form.date.birthEstimate.estimatedMonth
                             "
-                            disabled
+                            :disabled ="true || isViewMode"
                             placeholder="Estimated Month"
                             type="number"
                             :state="errors[0] ? false : valid ? true : null"
@@ -434,7 +452,7 @@
               </b-form-group>
 
               <!-- Sixth row -->
-              <b-form-group id="input-group-4" class="col-sm-12 label">
+              <b-form-group id="input-group-6" class="col-sm-12 label">
                 <label for="religion">Religion:</label>
                 <div class="container-fluid">
                   <ValidationProvider id="religion" tag="div" name="religion">
@@ -445,6 +463,7 @@
                         v-model="form.religionSelected"
                         name="religion"
                         value="Single"
+                        :disabled ="isViewMode"
                         >Muslim</b-form-radio
                       >
                       <b-form-radio
@@ -453,6 +472,7 @@
                         v-model="form.religionSelected"
                         name="religion"
                         value="Married"
+                        :disabled ="isViewMode"
                         >Christian</b-form-radio
                       >
                       <b-form-radio
@@ -461,6 +481,7 @@
                         v-model="form.religionSelected"
                         name="religion"
                         value="None"
+                        :disabled ="isViewMode"
                         >Others</b-form-radio
                       >
                     </div>

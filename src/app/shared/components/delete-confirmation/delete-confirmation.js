@@ -10,13 +10,13 @@ export default {
             //confirmation value
             confirmationValue: Boolean,
             showAllert: false,
-            notificationStatueValue: 'success',
-            notificationMessageValue: 'User Deleted !!',
         }
     },
     props: {
         // show delete modal
-        deleteBtnClick: Boolean
+        deleteBtnClick: Boolean,
+        notificationStatueValue: '',
+        notificationMessageValue: '',
     },
     watch: {
         deleteBtnClick: function (val) {
@@ -34,7 +34,6 @@ export default {
                     centered: false,
                     noCloseOnEsc: true,
                     noCloseOnBackdrop: true,
-
                 })
                     .then(value => {
                         this.confirmationValue = value
@@ -56,6 +55,8 @@ export default {
         confirmationValue: function (val) {
             // Emit this confirmationValue to the parents component
             this.$emit("child-delete-confirmation-value-emitter", val);
+            // this.$emit("delete-confirmation-message-emitter", val);
+            // this.$emit("delete-confirmation-state-emitter", val);
         }
 
 

@@ -18,7 +18,9 @@ export default {
       showDeleteConfirmation: false,
       isDeleted: false,
       rowDeleted: '',
-
+      notificationStatueValue: 'success',
+      notificationMessageValue: 'User is Deleted !!',
+      // grid schema Model
       schemaModelFields: {
         ProductID: { editable: false, nullable: true },
         ProductName: {
@@ -41,6 +43,7 @@ export default {
     }
   },
   methods: {
+    //grid operations
     parameterMap: function (options, operation) {
       //*** options.models = object with new update
       //*** options == object contains array of models
@@ -50,6 +53,7 @@ export default {
         return { models: kendo.stringify(options.models) }
       }
     },
+    //Delete Confirmation
     DeleteUser: function (e) {
       e.preventDefault();
       //show confirmation modal
@@ -68,6 +72,7 @@ export default {
     }
   },
   watch: {
+    //Delete Confirmation
     isDeleted: function (val) {
       if (val) {
         this.showDeleteConfirmation = false

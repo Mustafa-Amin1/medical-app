@@ -1,10 +1,14 @@
 import "../../forms/formValidate";
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import { mapState } from 'vuex'
+import $ from 'jquery';
 export default {
     data() {
         return {
             // date: null,
+            // isViewMode:false,
             datepicker: false,
+            displayNone: '',
             form: {
                 patientName: {
                     en: {
@@ -39,6 +43,11 @@ export default {
             dateInputsRequired: true,
             value: ""
         };
+    },
+    props: {
+        objData: {},
+        // windowClosed: null
+        // isViewMode:false
     },
     methods: {
         onSubmit() {
@@ -87,7 +96,7 @@ export default {
             return;
         },
 
-        passwordCheck: function() {
+        passwordCheck: function () {
             if (
                 this.form.password.length > 0 &&
                 this.form.password.length <= 4
@@ -108,7 +117,7 @@ export default {
                 return (this.passwordStrenght = "Strong Password");
             }
         },
-        onContext: function(ctx) {
+        onContext: function (ctx) {
             // add picker value to inputs
             let datePicker = (this.selected = ctx.selectedYMD);
             let dateValues = datePicker.split("-");
@@ -117,7 +126,32 @@ export default {
             this.form.date.month = dateValues[1];
         }
     },
+    computed: {
+        ...mapState(['isViewMode']),
+    },
     watch: {
+        //view mode
+        objData(val) {
+            console.log(val);
+            this.form.patientName.en.Fname = val.Name;
+            this.form.patientName.en.Sname = "";
+            this.form.patientName.en.Thname = "";
+            this.form.patientName.en.Lname = "";
+            this.form.patientName.ar.Fname = "";
+            this.form.patientName.ar.Sname = "";
+            this.form.patientName.ar.Thname = "";
+            this.form.patientName.ar.Lname = "";
+            this.form.genderSelected = "";
+            this.form.maritalSelected = "";
+            this.form.date.month = "";
+            this.form.date.day = "";
+            this.form.date.year = "";
+            this.form.date.datePickerValue = "";
+            this.form.date.birthEstimate.estimatedYear = "";
+            this.form.date.birthEstimate.estimatedMonth = "";
+            this.form.religionSelected = "";
+        },
+        //birth estimate 
         birthEstimateCheck(newVal) {
             let dateInputs = Array.from(
                 document.getElementsByClassName("dateInput")
@@ -157,9 +191,52 @@ export default {
                     input1.removeAttribute("disabled");
                 }
             }
+        },
+        windowClosed(val) {
+            
+            if (val == true) {
+                console.log(val)
+                this.resetForm();
+                let inputsValid = Array.from($('.is-valid'))
+                let inputsInValid = Array.from($('.is-invalid'))
+                if (inputsValid) {
+                    for (let input of inputsValid) {
+                        input.classList.remove("is-valid");
+                    }
+                }
+                if (inputsInValid) {
+                    for (let input of inputsInValid) {
+                        input.classList.remove("is-invalid");
+                    }
+                }
+
+                // console.log(inputsValid)
+                // console.log(inputsInValid)
+                // let inputs = Array.from($('.is-valid'))
+                // console.log(inputs)
+                // for(let input in inputs){
+                //     if(input.classList.contains('is-valid') || input.classList.contains('is-invalid') ) {
+                //         console.log(input)
+                //         input.classList.remove("is-valid");
+                //         input.classList.remove("is-invalid");
+                //     }
+                // }
+                // console.log(inputs)
+            }
         }
     },
-    computed: {},
+    beforeDestroy: function () {
+        // displayNone:function () {
+        // if(this.isViewMode == true) {
+        // this.displayNone ="none"
+        // console.log(this.displayNone);
+        // if(this.$store.state.isViewMode == true) {
+        // let inputs = $('input')
+        console.log('hello')
+        // }
+
+        // }
+    },
     components: {
         ValidationProvider,
         ValidationObserver
