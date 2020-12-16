@@ -11,11 +11,12 @@ import axios from "axios";
 
 //delete confirmation component
 import DeleteConfirmation from '@/app/shared/components/delete-confirmation/delete-confirmation.vue'
+import ConfirmPopup from '@/app/shared/components/delete-confirmation/delete-confirmation.vue'
 
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
 // child compopnents
-import paitentFormPopup from '../../../../app/shared/components/forms/patient-form/patient-form.vue'
+import paitentFormPopup from '../../../../../app/shared/components/forms/patient-form/patient-form.vue'
 
 //state
 // import { mapGetters, mapState } from "vuex";
@@ -31,6 +32,7 @@ export default {
     ValidationObserver,
     "app-paitent-form-popup": paitentFormPopup,
     'delete-confirmation': DeleteConfirmation,
+    ConfirmPopup
   },
   data: function () {
 
@@ -41,10 +43,6 @@ export default {
       rowDeleted: '',
       notificationStatueValue: 'success',
       notificationMessageValue: 'Doctor is Deleted !!',
-      // confirmData:[{
-      //   notificationStatueValue:'',
-      //   notificationMessageValue:''
-      // }],
       products: [],
       categories: [],
       actions: ["Minimize ", "Maximize", "Close"],
@@ -108,6 +106,7 @@ export default {
     DeleteUser: function (e) {
       e.preventDefault();
       //show confirmation modal
+
       this.showDeleteConfirmation = true
       //get row content
       let grid = this.$refs.grid.kendoWidget();
@@ -144,3 +143,32 @@ export default {
     }
   },
 };
+
+
+
+
+
+
+
+
+
+
+
+
+// export default {
+// 	name: 'App',
+// 	data() {
+// 		return {}
+// 	},
+// 	components: {
+// 	}, 
+// 	methods: {
+//         addtostore(){
+//             debugger
+//             this.$store.commit('UpdateCPG', {  CPGId: 254 });
+//             this.$router.push({'path': '/dashboard/new-doctor'})
+//         }
+// 	},
+// 	created() {
+// 	},
+// }

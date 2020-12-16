@@ -1,11 +1,49 @@
-const dashBoardData = {
+const state = {
+    //andlusia way
+    isViewMode: false,
+    isEditCPG: false,
+    CPGId: null,
+    CPG:null
+}
 
-    state: {
-        isViewMode:false
+const mutations = {
+
+ //andlusia way
+    UpdateCPG(state, value) {
+      state.isViewMode = value.isViewMode;
+      state.isEditCPG = value.isEditCPG,
+      state.CPGId = value.CPGId;
+      state.CPG = value.CPG;
+    }
+}
+
+const getters = {
+    getUpdatedCPG: state => {
+        return {
+            isViewMode: state.isViewMode,
+            isEditCPG: state.isEditCPG,
+            CPGId: state.CPGId,
+            CPG: state.CPG,
+        }
+
     },
-    mutations: {},
-    actions: {},
+}
+
+export default {
+    mutations,
+    state,
+    getters
+};
+
+
+// const dashBoardData = {
+
+//     state: {
+//         isViewMode:false
+//     },
+//     mutations: {},
+//     actions: {},
     
-   };
-   export default dashBoardData;
+//    };
+//    export default dashBoardData;
    

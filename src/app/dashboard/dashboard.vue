@@ -23,7 +23,7 @@
           </router-link>
         </div>
         <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
-          <router-link to="/dashboard/doctors">
+          <router-link to="/dashboard/doctor-list">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <img
@@ -42,7 +42,7 @@
           </router-link>
         </div>
         <div class="database-item col-lg-3 col-sm-6 px-5 my-2">
-          <router-link to="/dashboard/patients">
+          <router-link to="/dashboard/patient-list">
             <div class="row align-items-center datavase-item__row">
               <div class="col-md-3">
                 <img

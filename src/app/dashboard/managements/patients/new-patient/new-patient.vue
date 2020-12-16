@@ -1,6 +1,6 @@
 <template>
   <div id="patient-form-popoup">
-    <!-- <p>{{isViewMode}}</p> -->
+    <!-- <p>patient ID sent from patient list by state is <span style="font-size:30px">{{CPGId}} {{`${isViewMode}`}}</span></p> -->
     <div class="container-fluid">
       <!-- <div class="form-header text-center">
         <h2>Patient Registeration</h2>
@@ -21,7 +21,7 @@
                   <b-button class="col-3" variant="primary" @click="resetForm"
                     >Clear</b-button
                   >
-                  <b-button class="col-3" variant="primary">Cancel</b-button>
+                  <b-button class="col-3" variant="primary"  @click="cancelForm">Cancel</b-button>
                 </div>
               </div>
             </div>
@@ -280,6 +280,7 @@
 
               <!-- Fifth row -->
               <b-form-group id="input-group-5" class="col-sm-12 label">
+                <span>{{form.date.datePickerValue}}</span>
                 <label>Date Of Birth :</label>
                 <div class="container-fluid">
                   <div class="row justify-content-start w-50 mb-4 px-2">
@@ -499,7 +500,7 @@
 
 
 
-<script src="./patient-form.js"></script>
+<script src="./new-patient.js"></script>
 
 
 

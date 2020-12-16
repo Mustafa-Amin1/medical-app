@@ -1,20 +1,28 @@
-import { dashboardData } from './shared/state/dashboard-data';
+import { dashboardData } from './shared/state';
 
-const dashboardState ={
-  state: {
-    cartCounter: [],
-  },
-  getters:{
-  //   getCartCounter(state) {
-  //     return state.cartCounter.length
-  // }
-  },
-  mutations: {},
-  actions: {},
+export default {
   modules: {
     dashboardData
   }
-  
 };
 
-export default dashboardState;
+// import { dashboardData } from './shared/state/dashboard-data';
+
+// const dashboardState ={
+//   state: {
+//     cartCounter: [],
+//   },
+//   getters:{
+//   //   getCartCounter(state) {
+//   //     return state.cartCounter.length
+//   // }
+//   },
+//   mutations: {},
+//   actions: {},
+//   modules: {
+//     dashboardData
+//   }
+  
+// };
+
+// export default dashboardState;

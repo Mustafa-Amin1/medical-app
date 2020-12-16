@@ -1,0 +1,96 @@
+@import "../../../../../theme/partials/variables";
+
+
+::v-deep .modal-dialog.modal-md.modal-dialog-scrollable {
+    top: calc(50% - 130px); // margin-top: 28px; margin-bottom: 28px; line-height: 18px; max-height: clac( 100% - 56px;) === 130px
+}
+
+
+::v-deep .modal-header{
+    padding: 10px;
+    border: none !important;
+    span{
+        &::before{
+            font-size: 28px;
+            color: inherit
+        }
+    }
+    .btn-muted{
+        color: $Bombay;
+        font-size: 25px;
+        padding: 0;
+        line-height: 20px;
+        margin: -4px 0 0 0;
+        transform: scale(1, 0.7);
+        font-weight: 600;
+    }
+}
+::v-deep .modal-body{
+    color: $Boulder;
+
+    p {
+        font-size: 1rem;
+    }
+    span{
+        color:$CodGray;
+        font-family: 'Segoe UI Semibold';
+    }
+}
+::v-deep .modal-footer {
+    border: none !important;
+    padding: 7px;
+
+    button {
+        min-width: 80px;
+    }
+}
+::v-deep .warning-border {
+    border-top: 5px solid $Bittersweet;
+    color: $Bittersweet
+}
+
+.text-danger{
+    color: $Bittersweet !important;
+}
+
+p {
+    color: #777;
+}
+
+::v-deep .Error-border {
+    border-top: 5px solid #FB9C54;
+    color: #FB9C54;
+
+    .modal-body {
+        p {
+            white-space: pre;
+        }
+    }
+
+    .modal-footer {
+        .btn-outline-secondary {
+            background-color: #FB9C54 !important;
+            color: $white;
+            border-color: #FB9C54;
+        }
+    }
+}
+
+
+::v-deep .Success-border {
+    border-top: 5px solid $shamrock;
+    color: $shamrock;
+
+    .modal-footer {
+        .btn-outline-secondary {
+            background-color: $shamrock !important;
+            color: $white;
+            border-color: $shamrock;
+        }
+    }
+}
+
+.text-alert-JE {
+    color: #FB9C54 !important;
+}
+
